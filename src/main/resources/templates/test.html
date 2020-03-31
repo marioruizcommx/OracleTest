@@ -1,218 +1,268 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
-<meta charset="utf-8" />
+<title>Bootstrap 4 Blog Template For Developers</title>
 
-<title>GYM Certifications</title>
+<!-- Meta -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Blog Template">
+<meta name="author" content="Xiaoying Riley at 3rd Wave Media">
+<link rel="shortcut icon" href="favicon.ico">
 
-<!-- Bootstrap core CSS -->
+<!-- FontAwesome JS-->
+<script defer
+	src="https://use.fontawesome.com/releases/v5.7.1/js/all.js"
+	integrity="sha384-eVEQC9zshBn0rFj4+TU78eNA19HMNigMviK/PU/FFjLXqa/GKPgX58rvt5Z8PLs7"
+	crossorigin="anonymous"></script>
+
+<!-- Plugin CSS -->
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+	href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/styles/monokai-sublime.min.css">
 
-<!-- Custom styles for this template -->
-<link href="#" th:href="@{/css/gym.css}" rel="stylesheet" />
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-	crossorigin="anonymous">
+<!-- Theme CSS -->
+<link id="theme-style" rel="stylesheet" href="assets/css/theme-1.css">
+
 
 </head>
 
-<body class="bg-light">
+<body>
 
-	<div
-		class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
-		<h5 class="my-0 mr-md-auto font-weight-normal">GYM Certifications</h5>
+	<header class="header text-center">
+		<h1 class="blog-name pt-lg-4 mb-0">
+			<a href="index.html">Mario Ruiz</a>
+		</h1>
 
-		<ul class="navbar-nav mr-auto">
+		<nav class="navbar navbar-expand-lg navbar-dark">
 
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navigation" aria-controls="navigation"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
 
-			<div th:switch="${global.variable}">
-				<li th:case="false" class="nav-item p-3 mb-2 bg-warning text-dark">
-					<h1 id="countdown"></h1>
-				</li>
+			<div id="navigation" class="collapse navbar-collapse flex-column">
+				<div class="profile-section pt-3 pt-lg-0">
+					<img class="profile-image mb-3 rounded-circle mx-auto"
+						src="assets/images/profile.png" alt="image">
 
-				<li th:case="true"></li>
+					<div class="bio mb-3">
+						Hi, my name is Mario Ruiz. Welcome to my portafolio, here you can
+						found more about my work.<br>
+						<a href="about.html">Find out more about me</a>
+					</div>
+					<!--//bio-->
+					<ul class="social-list list-inline py-3 mx-auto">
+						<li class="list-inline-item"><a
+							href="https://twitter.com/MarioRuizMX"><i
+								class="fab fa-twitter fa-fw"></i></a></li>
+						<li class="list-inline-item"><a
+							href="https://www.linkedin.com/in/marioruizlinkedin/"><i
+								class="fab fa-linkedin-in fa-fw"></i></a></li>
+						<li class="list-inline-item"><a
+							href="https://github.com/marioruizcommx"><i
+								class="fab fa-github-alt fa-fw"></i></a></li>
+						<li class="list-inline-item"><a
+							href="https://stackoverflow.com/users/9854902/mario-ruiz"><i
+								class="fab fa-stack-overflow fa-fw"></i></a></li>
+						<li class="list-inline-item"><a
+							href="https://codepen.io/marioruizcommx"><i
+								class="fab fa-codepen fa-fw"></i></a></li>
+					</ul>
+					<!--//social-list-->
+					<hr>
+				</div>
+				<!--//profile-section-->
+
+				<ul class="navbar-nav flex-column text-left">
+					<li class="nav-item active"><a class="nav-link"
+						th:href="@{/index}"><i class="fas fa-home fa-fw mr-2"></i>Blog
+							Home <span class="sr-only">(current)</span></a></li>
+					<li class="nav-item"><a class="nav-link"
+						th:href="@{/portafolio}"><i class="fas fa-bookmark fa-fw mr-2"></i>Portafolio</a>
+					</li>
+					<li class="nav-item"><a class="nav-link" th:href="@{/about}"><i
+							class="fas fa-user fa-fw mr-2"></i>About Me</a></li>
+				</ul>
+
+				<div class="my-2 my-md-3">
+					<a class="btn btn-primary"
+						href="https://www.linkedin.com/in/marioruizlinkedin/"
+						target="_blank">Add me Linkedin</a>
+				</div>
 			</div>
+		</nav>
+	</header>
 
+	<div class="main-wrapper">
+         <article class="blog-post px-3 py-5 p-md-5">
+		    <div class="container">
+			    <header class="blog-post-header">
+				    <h2 class="title mb-2">Gym Certifications</h2>
+			    </header>
 
-		</ul>
-		<a class="p-2 text-dark" th:href="@{/menu-principal}">All Products</a> 
-			<a class="p-2 text-dark" href="#"> Profile </a>
-			 <a th:href="@{/index}">
-			<button type="button" class="btn btn-secondary btn-lg" th:href="@{/index}">Sign out</button> </a>
+				<div >
+					<form class="form-group" action="#"
+						th:action="@{/test?typeTest=__${global.variable}__}"
+						th:object="${AnswersModel}" method="post">
 
-	</div>
-
-
-	<!-- / #main-header __${global.variable}__ -->
-
-
-	<section id="main-content">
-
-		<article>
-
-			<div class="container card bg-light text-center w-50">
-				<form class="form-group" action="#"
-					th:action="@{/test?typeTest=__${global.variable}__}"
-					th:object="${AnswersModel}" method="post">
-
-					<fieldset class="container">
-						<br>
-						<div class="row text-left"
-							th:if="${not #lists.isEmpty(question[0])}">
-							<h1 th:text="${question[0]}"></h1>
-						</div>
-						<div class="row text-left"
-							th:if="${not #lists.isEmpty(question[1])}">
-							<h3 th:text="${question[1]}"></h3>
-						</div>
-						</br>
-					</fieldset>
-
-
-
-
-					<fieldset class="container">
-						<div class="container">
-
-							<div class="row " th:if="${not #lists.isEmpty(question[1])}">
-								<div th:if="${not #lists.isEmpty(review.imagen)}">
-									<img th:src="@{/imgs/java/808/{image}(image=${review.imagen})}">
-								</div>
+						<fieldset class="container">
+							<br>
+							<div class="row text-left"
+								th:if="${not #lists.isEmpty(question[0])}">
+								<h4 th:text="${question[0]}"></h4>
 							</div>
+							<div class="row text-left"
+								th:if="${not #lists.isEmpty(question[1])}">
+								<p th:text="${question[1]}"></p>
+							</div>
+							</br>
+						</fieldset>
 
 
 
+
+						<fieldset class="container">
 							<div class="container">
 
-
-								<div class="row checkbox"
-									th:if="${not #lists.isEmpty(question[2])}"
-									th:switch="${response[2]}">
-
-									<h3 class="text-success" th:case="'A'">
-										<input type="checkbox" name="optionA" value="1" id="optionA" />
-										<label for="optionA" th:text="${question[2]}">OptionA</label>
-									</h3>
-
-									<h3 th:case="''">
-										<input type="checkbox" name="optionA" value="1" id="optionA" />
-										<label for="optionA" th:text="${question[2]}">OptionA</label>
-									</h3>
-
-									</br>
-
+								<div class="row " th:if="${not #lists.isEmpty(question[1])}">
+									<div th:if="${not #lists.isEmpty(review.imagen)}">
+										<img
+											th:src="@{/imgs/java/808/{image}(image=${review.imagen})}">
+									</div>
 								</div>
 
 
 
-								<div class="row checkbox"
-									th:if="${not #lists.isEmpty(question[3])}"
-									th:switch="${response[3]}">
-									<h3 class="text-success" th:case="'B'">
-										<input type="checkbox" name="optionB" value="1" id="optionB" />
-										<label for="optionA" th:text="${question[3]}">OptionB</label>
-									</h3>
-									<h3 th:case="''">
-										<input type="checkbox" name="optionB" value="1" id="optionB" />
-										<label for="optionA" th:text="${question[3]}">OptionB</label>
-									</h3>
-									</br>
-								</div>
+								<div class="container">
 
-								<div class="row checkbox"
-									th:if="${not #lists.isEmpty(question[4])}"
-									th:switch="${response[4]}">
-									<h3 class="text-success" th:case="'C'">
-										<input type="checkbox" name="optionC" value="1" id="optionC" />
-										<label for="optionA" th:text="${question[4]}">OptionC</label>
-									</h3>
-									<h3 th:case="''">
-										<input type="checkbox" name="optionC" value="1" id="optionC" />
-										<label for="optionA" th:text="${question[4]}">OptionC</label>
-									</h3>
-									</br>
-								</div>
 
-								<div class="row checkbox"
-									th:if="${not #lists.isEmpty(question[5])}"
-									th:switch="${response[5]}">
-									<h3 class="text-success" th:case="'D'">
-										<input type="checkbox" name="optionD" value="1" id="optionD" />
-										<label for="optionA" th:text="${question[5]}">OptionD</label>
-									</h3>
-									<h3 th:case="''">
-										<input type="checkbox" name="optionD" value="1" id="optionD" />
-										<label for="optionA" th:text="${question[5]}">OptionD</label>
-									</h3>
-									</br>
-								</div>
+									<div class="row checkbox"
+										th:if="${not #lists.isEmpty(question[2])}"
+										th:switch="${response[2]}">
 
-								<div class="row checkbox"
-									th:if="${not #lists.isEmpty(question[6])}"
-									th:switch="${response[6]}">
-									<h3 class="text-success" th:case="'E'">
-										<input type="checkbox" name="optionE" value="1" id="optionE" />
-										<label for="optionA" th:text="${question[6]}">OptionE</label>
-									</h3>
-									<h3 th:case="''">
-										<input type="checkbox" name="optionE" value="1" id="optionE" />
-										<label for="optionA" th:text="${question[6]}">OptionE</label>
-									</h3>
-									</br>
-								</div>
-								<div class="row checkbox"
-									th:if="${not #lists.isEmpty(question[7])}"
-									th:switch="${response[7]}">
-									<h3 class="text-success" th:case="'F'">
-										<input type="checkbox" name="optionF" value="1" id="optionF" />
-										<label for="optionA" th:text="${question[7]}">OptionF</label>
-									</h3>
-									<h3 th:case="''">
-										<input type="checkbox" name="optionF" value="1" id="optionF" />
-										<label for="optionA" th:text="${question[7]}">OptionF</label>
-									</h3>
-									</br>
+										<p class="text-success" th:case="'A'">
+											<input type="checkbox" name="optionA" value="1" id="optionA" />
+											<label for="optionA" th:text="${question[2]}">OptionA</label>
+										</p>
+
+										<p th:case="''">
+											<input type="checkbox" name="optionA" value="1" id="optionA" />
+											<label for="optionA" th:text="${question[2]}">OptionA</label>
+										</p>
+
+										</br>
+
+									</div>
+
+
+
+									<div class="row checkbox"
+										th:if="${not #lists.isEmpty(question[3])}"
+										th:switch="${response[3]}">
+										<p class="text-success" th:case="'B'">
+											<input type="checkbox" name="optionB" value="1" id="optionB" />
+											<label for="optionA" th:text="${question[3]}">OptionB</label>
+										</p>
+										<p th:case="''">
+											<input type="checkbox" name="optionB" value="1" id="optionB" />
+											<label for="optionA" th:text="${question[3]}">OptionB</label>
+										</p>
+										</br>
+									</div>
+
+									<div class="row checkbox"
+										th:if="${not #lists.isEmpty(question[4])}"
+										th:switch="${response[4]}">
+										<p class="text-success" th:case="'C'">
+											<input type="checkbox" name="optionC" value="1" id="optionC" />
+											<label for="optionA" th:text="${question[4]}">OptionC</label>
+										</p>
+										<p th:case="''">
+											<input type="checkbox" name="optionC" value="1" id="optionC" />
+											<label for="optionA" th:text="${question[4]}">OptionC</label>
+										</p>
+										</br>
+									</div>
+
+									<div class="row checkbox"
+										th:if="${not #lists.isEmpty(question[5])}"
+										th:switch="${response[5]}">
+										<p class="text-success" th:case="'D'">
+											<input type="checkbox" name="optionD" value="1" id="optionD" />
+											<label for="optionA" th:text="${question[5]}">OptionD</label>
+										</p>
+										<p th:case="''">
+											<input type="checkbox" name="optionD" value="1" id="optionD" />
+											<label for="optionA" th:text="${question[5]}">OptionD</label>
+										</p>
+										</br>
+									</div>
+
+									<div class="row checkbox"
+										th:if="${not #lists.isEmpty(question[6])}"
+										th:switch="${response[6]}">
+										<p class="text-success" th:case="'E'">
+											<input type="checkbox" name="optionE" value="1" id="optionE" />
+											<label for="optionA" th:text="${question[6]}">OptionE</label>
+										</p>
+										<p th:case="''">
+											<input type="checkbox" name="optionE" value="1" id="optionE" />
+											<label for="optionA" th:text="${question[6]}">OptionE</label>
+										</p>
+										</br>
+									</div>
+									<div class="row checkbox"
+										th:if="${not #lists.isEmpty(question[7])}"
+										th:switch="${response[7]}">
+										<p class="text-success" th:case="'F'">
+											<input type="checkbox" name="optionF" value="1" id="optionF" />
+											<label for="optionA" th:text="${question[7]}">OptionF</label>
+										</p>
+										<p th:case="''">
+											<input type="checkbox" name="optionF" value="1" id="optionF" />
+											<label for="optionA" th:text="${question[7]}">OptionF</label>
+										</p>
+										</br>
+									</div>
 								</div>
 							</div>
-						</div>
 
 
-						<button type="submit" class="btn btn-info btn-lg">Next
-							Question</button>
+							<button type="submit" class="btn btn-info btn-lg">Next
+								Question</button>
 
 
-					</fieldset>
-				</form>
-				<form class="form-group" action="#" th:action="@{/score}">
-					<p>
-						<button type="submit" class="btn btn-outline-secondary btn-lg">To
-							Abort</button>
-					</p>
-				</form>
-			</div>
+						</fieldset>
+					</form>
+					<form class="form-group" action="#" th:action="@{/score}">
+						<p>
+							<button type="submit" class="btn btn-outline-secondary btn-lg">To
+								Abort</button>
+						</p>
+					</form>
 
-		</article>
-		<!-- / article -->
+					<div th:switch="${global.variable}">
+						<li th:case="false" class="nav-item p-3 mb-2 bg-warning text-dark">
+							<h1 id="countdown"></h1>
+						</li>
 
-	</section>
-	<!-- / #main-content -->
-	<br>
+						<li th:case="true"></li>
+					</div>
 
-	<div class="progress">
-		<div class="progress-bar bg-info"
-			role="progressbar" aria-valuenow="${review.valuenow}"
-			aria-valuemin="0" aria-valuemax="100"
-			th:style="'width:' + ${review.valuenow} + '%'"></div>
-	</div>
+					<div class="progress">
+						<div class="progress-bar bg-info" role="progressbar"
+							aria-valuenow="${review.valuenow}" aria-valuemin="0"
+							aria-valuemax="100"
+							th:style="'width:' + ${review.valuenow} + '%'"></div>
+					</div>
 
-	>
+				</div>
 
 
-	</div>
-	<!-- / #main-footer -->
-	<script>
+		</div>
+		<script>
       function countdownTimer() {
         const difference = +new Date("2021-03-01") - +new Date();
         let remaining = "Time's up!";
@@ -238,18 +288,5 @@
       countdownTimer();
       setInterval(countdownTimer, 1000);
     </script>
-
-	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-		integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-		integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-		crossorigin="anonymous"></script>
-	<div class="progress">
 </body>
 </html>
