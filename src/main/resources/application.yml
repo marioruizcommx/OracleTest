@@ -2,9 +2,9 @@ server:
      port: 8090
 spring:
   datasource:
-    url: jdbc:mysql://  zy4wtsaw3sjejnud.cbetxkdyhwsb.us-east-1.rds.amazonaws.com/ra6k3iej4vmtew6l?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
-    username: fbqzwwoz6op0h5tb
-    password: scovb8qxs29h95l1
+    url: jdbc:mysql://us-cdbr-iron-east-01.cleardb.net/heroku_55014e0ce4a03ea?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: bcf7f7557db8cd
+    password: c459779c
   jpa:
     show-sql: true
     hibernate:
