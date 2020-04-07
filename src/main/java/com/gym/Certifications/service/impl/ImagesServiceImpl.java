@@ -178,7 +178,7 @@ public class ImagesServiceImpl implements ImagesService{
 
 	public ImagesModel getImage(String clave_exam, int question_number) {
 
-		Images imageEntity = imagesRepository.findImageBy("", 1);
+		Images imageEntity = imagesRepository.findImageBy("1Z0-808", question_number);
 		
 		ImagesModel imagesModel = new ImagesModel();
 		

@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import com.gym.Certifications.component.QuestionsConverter;
 import com.gym.Certifications.entity.Questions;
 import com.gym.Certifications.model.QuestionModel;
+import com.gym.Certifications.repository.ExamRepository;
 import com.gym.Certifications.repository.QuestionsRepository;
 import com.gym.Certifications.service.QuestionsService;
 
@@ -29,11 +30,15 @@ public class QuestionsServiceImpl implements QuestionsService{
 	@Autowired
 	@Qualifier("questionsRepository")
 	private QuestionsRepository questionsRepository;
+	
+	@Autowired
+	@Qualifier("examRepository")
+	private ExamRepository examRepository;
 
 
     public QuestionModel getQuestion(String clave_exam, int number_question) {
     	
-	Questions questionEntity = questionsRepository.findQuestionBy("1Z0-808",1);
+	Questions questionEntity = questionsRepository.findQuestionBy(clave_exam,number_question);
 	
 	QuestionModel questionsModel = new QuestionModel();
 	questionsModel = questionsConverter.convertQuestions2Questions2Model(questionEntity);
@@ -42,6 +47,12 @@ public class QuestionsServiceImpl implements QuestionsService{
 	return questionsModel;
 
     }
+    
+    @Override
+	public int countQuestions(String clave_exam) {
+		int countQuestionExam = examRepository.countQuestions(clave_exam);
+		return countQuestionExam;
+	}
 
 
 	@Override
@@ -210,6 +221,9 @@ public class QuestionsServiceImpl implements QuestionsService{
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+
+	
 
 
 }

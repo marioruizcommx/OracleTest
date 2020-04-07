@@ -56,14 +56,14 @@
 					<li class="nav-item">
 					    <a class="nav-link" th:href="@{/portafolio}"><i class="fas fa-bookmark fa-fw mr-2"></i>Portafolio</a>
 					</li>
-					<li class="nav-item">
-					    <a class="nav-link" th:href="@{/about}"><i class="fas fa-user fa-fw mr-2"></i>About Me</a>
-					</li>
+
 				</ul>
 				
 				<div class="my-2 my-md-3">
 				    <a class="btn btn-primary" href="https://www.linkedin.com/in/marioruizlinkedin/" target="_blank">Add me Linkedin</a>
 				</div>
+								<a type="button" class="btn btn-secondary btn-sm" href="assets/docs/CV_Mario_Ruiz_Gonzalez-English.pdf" target="_blank">Download CV</a>
+				
 			</div>
 		</nav>
     </header>
@@ -92,7 +92,7 @@
 								</div>
 						  		
 						  		</li>
-						  <li class="list-group-item"><h2>Number of questions: 77</h2></li>
+						  <li class="list-group-item"><h2>Number of questions: <h2 th:text="${totalQuestion.totalQuestion}"></h2></h2></li>
 						  <li class="list-group-item"><h2>Score to pass: 60% </h2></li>
 						</ul>
 

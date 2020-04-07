@@ -41,8 +41,10 @@ public class TestController {
 	
 	@GetMapping("/test")
 	public ModelAndView showTest(@RequestParam(name = "typeTest", required= false) boolean typeTest, 
-			                     @RequestParam(name = "resetTest", required= false) boolean resetTest, Model model) {
+			                     @RequestParam(name = "resetTest", required= false) boolean resetTest,
+			                     @RequestParam(name = "exam", required= false) String exam ,Model model) {
 
+		System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++este es el examen:"+exam);
 		numQue = String.valueOf(testService.getTier());
 		int porcentaje = (Integer.valueOf(numQue)* 100)/77;
 		boolean typeTestLocal; 
@@ -52,7 +54,10 @@ public class TestController {
 		ModelAndView mav = new ModelAndView(ViewConstant.JAVA_FORM);
 		ArrayList<String> unAnswers = new ArrayList<String>();
 		HashMap<String, String> imagen = new HashMap<String, String>();
+		HashMap<String, String> examNow = new HashMap<String, String>();
 		HashMap<String, Boolean> globalVar = new HashMap<String, Boolean>();
+		
+		examNow.put("exam", exam);
 		
 		if(resetTest==true) {
 			testService.resetTest();
@@ -72,11 +77,11 @@ public class TestController {
         	
 		}else {
 			
-			unAnswers = testService.getValidAnswers(numQue);
+			unAnswers = testService.getValidAnswers(exam, numQue);
 		}
         globalVar.put("variable", typeTest);
         
-        if(testService.getImage(numQue)==true) {
+        if(testService.getImage(exam,numQue)==true) {
         	imagen.put("imagen", "");
         }else {
         	
@@ -88,10 +93,11 @@ public class TestController {
 		testService.setQuestionNow(Integer.valueOf(numQue));
 		testService.setImage(numQue);
 		mav.addObject("review", imagen);
-		mav.addObject("question", testService.getQuestion(numQue));
-		//mav.addObject("question", que);
+		mav.addObject("question", testService.getQuestion(exam, numQue));
+
 		mav.addObject("response", unAnswers);
 		mav.addObject("global", globalVar);
+		mav.addObject("exam",examNow);
 		testService.setTier(Integer.valueOf(numQue));
 		System.out.println("+++++++++++++++++++++++++++++++ numque " + numQue);
 		
@@ -102,7 +108,9 @@ public class TestController {
 
 
 	@PostMapping("/test")
-	public String workAnswer(@RequestParam(name = "typeTest", required= false) boolean typeTest, @ModelAttribute(name = "answersU") AnswersModel answersModel, Model model) {
+	public String workAnswer(@RequestParam(name = "typeTest", required= false) boolean typeTest,
+							 @RequestParam(name = "exam", required= false) String exam,
+							 @ModelAttribute(name = "answersU") AnswersModel answersModel, Model model) {
 
 		LOG.info("Metodo: que viene de respuestas: " + answersModel.toString());
 		ArrayList<String> ansU = new ArrayList<String>();
@@ -127,17 +135,19 @@ public class TestController {
 			ansU.add("F");
 		}
 
-		Boolean resultQuestion = testService.verifyAnswer(Integer.valueOf(numQue), ansU);
+		Boolean resultQuestion = testService.verifyAnswer(Integer.valueOf(numQue), ansU, exam);
 		System.out.println("La respuesta es:" + resultQuestion);
 		System.out.println("respuestas buenas:" + testService.getSuccess());
 		System.out.println("respuestas malas:" + testService.getFails());
 		
-		if(numQue.equals("77") ) {
+		int totalQuestion = testService.totalQuestions(exam);
+		
+		if(numQue.equals(String.valueOf(totalQuestion)) ) {
 			
 	        return "redirect:/score";
 		}
 		
-		return "redirect:/test?typeTest="+typeTest;
+		return "redirect:/test?typeTest="+typeTest+"&exam="+exam;
 
 	}
 	

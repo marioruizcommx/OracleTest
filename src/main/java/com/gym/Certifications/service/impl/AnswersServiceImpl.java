@@ -176,7 +176,7 @@ public class AnswersServiceImpl implements AnswersService {
 
 	@Override
 	public AnswersModel getAnswer(String clave_exam, int number_question) {
-		Answers answerEntity = answersRepository.findAnswerBy("1Z0-808",1);
+		Answers answerEntity = answersRepository.findAnswerBy(clave_exam,number_question);
 		
 		AnswersModel answersModel = new AnswersModel();
 		answersModel = answersConverter.convertAnswers2Answers2Model(answerEntity);

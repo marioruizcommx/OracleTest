@@ -12,5 +12,7 @@ import com.gym.Certifications.model.QuestionModel;
 public interface QuestionsService  extends JpaRepository<Questions, String> {
 	
 	public QuestionModel getQuestion(String clave_exam, int number_question);
+	
+	public int countQuestions(String clave_exam);
 
 }

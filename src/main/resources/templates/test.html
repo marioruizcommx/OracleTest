@@ -49,8 +49,8 @@
 
 					<div class="bio mb-3">
 						Hi, my name is Mario Ruiz. Welcome to my portafolio, here you can
-						found more about my work.<br>
-						<a href="about.html">Find out more about me</a>
+						found more about my work.<br> <a href="about.html">Find
+							out more about me</a>
 					</div>
 					<!--//bio-->
 					<ul class="social-list list-inline py-3 mx-auto">
@@ -82,29 +82,30 @@
 					<li class="nav-item"><a class="nav-link"
 						th:href="@{/portafolio}"><i class="fas fa-bookmark fa-fw mr-2"></i>Portafolio</a>
 					</li>
-					<li class="nav-item"><a class="nav-link" th:href="@{/about}"><i
-							class="fas fa-user fa-fw mr-2"></i>About Me</a></li>
-				</ul>
 
-				<div class="my-2 my-md-3">
-					<a class="btn btn-primary"
-						href="https://www.linkedin.com/in/marioruizlinkedin/"
-						target="_blank">Add me Linkedin</a>
-				</div>
+
+					<div class="my-2 my-md-3">
+						<a class="btn btn-primary"
+							href="https://www.linkedin.com/in/marioruizlinkedin/"
+							target="_blank">Add me Linkedin</a>
+					</div>
+					<a type="button" class="btn btn-secondary btn-sm"
+						href="assets/docs/CV_Mario_Ruiz_Gonzalez-English.pdf"
+						target="_blank">Download CV</a>
 			</div>
 		</nav>
 	</header>
 
 	<div class="main-wrapper">
-         <article class="blog-post px-3 py-5 p-md-5">
-		    <div class="container">
-			    <header class="blog-post-header">
-				    <h2 class="title mb-2">Gym Certifications</h2>
-			    </header>
+		<article class="blog-post px-3 py-5 p-md-5">
+			<div class="container">
+				<header class="blog-post-header">
+					<h2 class="title mb-2">Gym Certifications</h2>
+				</header>
 
-				<div >
+				<div>
 					<form class="form-group" action="#"
-						th:action="@{/test?typeTest=__${global.variable}__}"
+						th:action="@{/test?typeTest=__${global.variable}__&exam=__${exam.exam}__}"
 						th:object="${AnswersModel}" method="post">
 
 						<fieldset class="container">
@@ -126,12 +127,12 @@
 						<fieldset class="container">
 							<div class="container">
 
-								<div class="row " th:if="${not #lists.isEmpty(question[1])}">
-									<div th:if="${not #lists.isEmpty(review.imagen)}">
-										<img
-											th:src="@{/imgs/java/808/{image}(image=${review.imagen})}">
-									</div>
+
+								<div class="row " th:if="${not #lists.isEmpty(review.imagen)}">
+									<img th:src="@{/imgs/java/808/{image}(image=${review.imagen})}">
 								</div>
+								<br>
+
 
 
 
@@ -229,19 +230,24 @@
 								</div>
 							</div>
 
+							<div class="text-center">
+								<button type="submit" class="btn btn-info btn-lg">Next
+									Question</button>
+								<br>
 
-							<button type="submit" class="btn btn-info btn-lg">Next
-								Question</button>
 
+							</div>
 
 						</fieldset>
 					</form>
-					<form class="form-group" action="#" th:action="@{/score}">
-						<p>
-							<button type="submit" class="btn btn-outline-secondary btn-lg">To
-								Abort</button>
-						</p>
+					<form class="form-group text-center" action="#"
+						th:action="@{/score}">
+
+						<button type="submit" class="btn btn-outline-secondary btn-lg">To
+							Abort</button>
+
 					</form>
+
 
 					<div th:switch="${global.variable}">
 						<li th:case="false" class="nav-item p-3 mb-2 bg-warning text-dark">
@@ -261,8 +267,8 @@
 				</div>
 
 
-		</div>
-		<script>
+			</div>
+			<script>
       function countdownTimer() {
         const difference = +new Date("2021-03-01") - +new Date();
         let remaining = "Time's up!";

@@ -57,12 +57,12 @@ public class TestServiceImpl implements TestService {
 	
 	
 	@Override
-	public ArrayList<String> getValidAnswers(String questionNumber){
+	public ArrayList<String> getValidAnswers(String clave_exam, String questionNumber){
 
 		
 		ArrayList<String> answer = new ArrayList<String>();
 		AnswersModel qm = new AnswersModel();
-		qm= answersServiceImpl.getAnswer("", 1);
+		qm= answersServiceImpl.getAnswer(clave_exam, Integer.valueOf(questionNumber));
 		
 		
 
@@ -116,13 +116,12 @@ public class TestServiceImpl implements TestService {
 		
 	}
 
-	@Override
-	public ArrayList<String> getQuestion(String questionNumber) {
+	public ArrayList<String> getQuestion(String clave_exam ,String questionNumber) {
 
 
 		ArrayList<String> question = new ArrayList<String>();
 		QuestionModel qm = new QuestionModel();
-		qm= questionsServiceImpl.getQuestion("", 1);
+		qm= questionsServiceImpl.getQuestion(clave_exam, Integer.valueOf(questionNumber));
 
 		question.add(qm.getContent1());
 		question.add(qm.getContent2());
@@ -155,9 +154,11 @@ public class TestServiceImpl implements TestService {
 	}
 
 	@Override
-	public int calculateScore() {
+	public int calculateScore(String clave_exam) {
+		
+		int countQuestions = questionsServiceImpl.countQuestions(clave_exam);
 		try {
-			int scoreFinal = (succes * 100) / hashMap.size();
+			int scoreFinal = (succes * 100) / countQuestions;
 			return scoreFinal;
 		} catch (Exception e) {
 			return 1;
@@ -165,14 +166,14 @@ public class TestServiceImpl implements TestService {
 	}
 
 	@Override
-	public boolean getImage(String imagenNumber) {
+	public boolean getImage(String clave_exam, String imagenNumber) {
          boolean result = false;
 
 		 ImagesModel img = new ImagesModel();
 
 		
 		 try {
-		  img = imagesServiceImpl.getImage("1Z0-808", 1);
+		  img = imagesServiceImpl.getImage(clave_exam, Integer.valueOf(imagenNumber));
 		 }catch(Exception e) {
 			 return false;
 		 }
@@ -207,13 +208,13 @@ public class TestServiceImpl implements TestService {
 	
 
 	@Override
-	public boolean verifyAnswer(int questionNumber, ArrayList<String> answersUser) {
+	public boolean verifyAnswer(int questionNumber, ArrayList<String> answersUser, String exam) {
 		HashMap<Integer, ArrayList<String>> answers = new HashMap<Integer, ArrayList<String>>();
 		// answersUser.add(String.valueOf(questionNumber));
 		ArrayList<String> answer = new ArrayList<String>();
 		ArrayList<String> answerBase = new ArrayList<String>();
 		AnswersModel qm = new AnswersModel();
-		qm= answersServiceImpl.getAnswer("", 1);
+		qm= answersServiceImpl.getAnswer(exam, questionNumber);
 		
 		answerBase.add(String.valueOf(questionNumber));
 		
@@ -332,6 +333,14 @@ public class TestServiceImpl implements TestService {
 		this.succes = 1;
 		this.tier = 1;
 	}
+
+	@Override
+	public int totalQuestions(String clave_exam) {
+		int countQuestions = questionsServiceImpl.countQuestions(clave_exam);
+		return countQuestions;
+	}
+
+
 	
 	
 
