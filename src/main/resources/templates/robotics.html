@@ -240,46 +240,21 @@ void f_pruebaComponentes() {
 
 
 							</tr>
-						</tbody>
-					</table>
-					
-					
-					<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-<input type="hidden" name="cmd" value="_s-xclick" />
-<input type="hidden" name="hosted_button_id" value="BLX7UMFVTKDCL" />
-<input type="image" src="https://mightywriters.org/wp-content/uploads/2016/12/button-PayPal-donate.png" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
-<img alt="" border="0" src="https://www.paypal.com/en_MX/i/scr/pixel.gif" width="1" height="1" />
-</form>
-
-
-<h5 class="my-3">Contents Under Donation:</h5>
-					<table class="table table-striped my-5">
-						<thead>
-							<tr>
-								<th scope="col">#</th>
-								<th scope="col">Component</th>
-								<th scope="col">Resource</th>
-
-							</tr>
-						</thead>
-						<tbody>
 							<tr>
 								<th scope="row">1</th>
 								<td>Sketch - code in C</td>
-								<td><button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalPush">Download</button></td>
+								<td>
+								<a type="button" class="btn btn-secondary"
+					href="https://github.com/marioruizcommx/arduino.git"
+					target="_blank">Github</a></td>
+								</td>
 
 							</tr>
-
 						</tbody>
 					</table>
 					
-					<form class="form-group text-center" action="#"
-						th:action="@{/validate-key?key=0}">
 
-						<button type="submit" class="btn btn-outline-secondary btn-lg">To
-							Abort</button>
 
-					</form>
 
 				</div>
 
@@ -287,43 +262,7 @@ void f_pruebaComponentes() {
 			</div>
 			<!--//main-wrapper-->
 			
-			<!--Modal: modalPush-->
-<div class="modal fade" id="modalPush" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog modal-notify modal-info" role="document">
-    <!--Content-->
-    <div class="modal-content text-center">
-      <!--Header-->
-      <div class="modal-header d-flex justify-content-center">
-        <p class="heading">Thanks for you support</p>
-      </div>
-
-      <!--Body-->
-      <div class="modal-body">
-
-        <p>Enter the key that did you receive via mail, after made you donation for start the download.</p>
-        <form class="text-center border border-light p-5" href="#" th:href="@{/validate-key?key=142753869}" >
-
-		    <!-- Name -->
-		    <input type="text" id="defaultSubscriptionFormPassword" class="form-control mb-4">
-
-		    <!-- Sign in button -->
-		    <button class="btn btn-secondary btn-block" type="submit">Download</button>
-
-		</form>
-
-      </div>
-
-      <!--Footer-->
-      <div class="modal-footer flex-center">
-        <a type="button" class="btn btn-outline-primary waves-effect" data-dismiss="modal">Cancel</a>
-      </div>
-    </div>
-    <!--/.Content-->
-  </div>
-</div>
-<!--Modal: modalPush-->
-
+			
 
 			<!-- *****CONFIGURE STYLE (REMOVE ON YOUR PRODUCTION SITE)****** -->
 			<div id="config-panel" class="config-panel d-none d-lg-block">
