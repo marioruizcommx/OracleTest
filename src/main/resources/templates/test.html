@@ -132,6 +132,18 @@
 									<img th:src="@{/imgs/java/808/{image}(image=${review.imagen})}">
 								</div>
 								<br>
+								<div class="row text-left"
+								th:if="${not #lists.isEmpty(question[8])}">
+								<p th:text="${question[1]}"></p>
+							    </div>
+							    <div class="row " th:if="${not #lists.isEmpty(review.imagen)}">
+									<img th:src="@{/imgs/java/808/{image}(image=${review.imagen})}">
+								</div>
+								<br>
+							    <div class="row text-left"
+								th:if="${not #lists.isEmpty(question[9])}">
+								<p th:text="${question[1]}"></p>
+							    </div>
 
 
 
